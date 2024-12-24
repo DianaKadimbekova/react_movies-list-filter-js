@@ -7,10 +7,10 @@ export const App = () => {
   const [query, setQuery] = useState('');
   const [visibleMovies, setVisibleMovies] = useState(moviesFromServer);
 
-  const filterMovies = (query) => {
-    const queryWithoutSpaces = query.replace(/\s+/g, '').toLowerCase();
+  const filterMovies = event => {
+    const queryWithoutSpaces = event.replace(/\s+/g, '').toLowerCase();
 
-    const filteredMovies = moviesFromServer.filter((movie) => {
+    const filteredMovies = moviesFromServer.filter(movie => {
       const titleWithoutSpaces = movie.title.replace(/\s+/g, '').toLowerCase();
       const descriptionWithoutSpaces = movie.description
         .replace(/\s+/g, '')
@@ -24,7 +24,6 @@ export const App = () => {
 
     setVisibleMovies(filteredMovies);
   };
-
 
   const handleQuery = element => {
     const searchQuery = element.target.value;
